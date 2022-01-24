@@ -27,20 +27,20 @@
   <div class="jumbotron">
    <fieldset>
     <legend>売上登録フォーム</legend>
-     <label>日付：<input type="text" class="form-control" name="date" id="date_sample"></label><br>
+     <label>日付：<input type="text" class="form-control" name="buy_date" id="date_sample" ></label><br>
      <label>商品名：<select class="form-select parent" aria-label="Default select example" name="item">
             <!-- 商品選択 -->
             <option value="" class="msg" selected>商品選択</option>
-                <option value="VO2019">ヴァンデオラージュ・ルージュ2019</option>
-                <option value="cidre2020">シードル2020</option>
-                <option value="mba2021">マスカット・ベーリーAロゼ2021</option>
+                <option value="ヴァンデオラージュ・ルージュ2019">ヴァンデオラージュ・ルージュ2019</option>
+                <option value="シードル2020">シードル2020</option>
+                <option value="マスカット・ベーリーAロゼ2021">マスカット・ベーリーAロゼ2021</option>
             </select>
             <br>
      <label>価格（税抜）：<select class="form-select children" aria-label="Default select example" name="price_taxex" disabled>
         <option value="" selected></option>
-           <option value="2500" data-val="VO2019">2500</option>
-           <option value="2000" data-val="cidre2020">2000</option>
-           <option value="2300" data-val="mba2021">2300</option>
+           <option value="2500" data-val="ヴァンデオラージュ・ルージュ2019">¥2,500</option>
+           <option value="2000" data-val="シードル2020">¥2,000</option>
+           <option value="2300" data-val="マスカット・ベーリーAロゼ2021">¥2,300</option>
         </select>
         <br>
      <label>数量：<select class="form-select" aria-label="Default select example" name="quantity">
@@ -86,8 +86,9 @@
 <script>
     // 日付選択
     $('#date_sample').datepicker({
-        format:'yyyy/mm/dd'
+        format:'yyyy/mm/dd',
     });
+
     // 商品選択
     var $children = $('.children'); 
     var original = $children.html();
