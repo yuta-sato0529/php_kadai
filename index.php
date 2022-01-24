@@ -36,14 +36,14 @@
                 <option value="マスカット・ベーリーAロゼ2021">マスカット・ベーリーAロゼ2021</option>
             </select>
             <br>
-     <label>価格（税抜）：<select class="form-select children" aria-label="Default select example" name="price_taxex" disabled>
+     <label>価格（税抜）：<select class="form-select children price_taxex" aria-label="Default select example" name="price_taxex" disabled>
         <option value="" selected></option>
            <option value="2500" data-val="ヴァンデオラージュ・ルージュ2019">¥2,500</option>
            <option value="2000" data-val="シードル2020">¥2,000</option>
            <option value="2300" data-val="マスカット・ベーリーAロゼ2021">¥2,300</option>
         </select>
         <br>
-     <label>数量：<select class="form-select" aria-label="Default select example" name="quantity">
+     <label>数量：<select class="form-select quantity" aria-label="Default select example" name="quantity">
             <!-- 商品選択 -->
             <option selected>数量選択</option>
                 <option value="1">1</option>
@@ -62,7 +62,7 @@
                 <option value="14">14</option>
                 <option value="15">15</option>
             </select><br>
-     <label>合計金額：<input type="text" name="sum_price"></label><br>
+     <label>合計金額：<input type="text" name="sum_price" id="item_sum" readonly></label><br>
      <label>顧客年代：<select class="form-select" aria-label="Default select example" name="cus_age">
             <!-- 年代選択 -->
             <option selected>年代</option>
@@ -81,13 +81,30 @@
      <input type="submit" value="送信">
     </fieldset>
   </div>
+ 
 </form>
+
+<div>
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+            CSVファイル：<br />
+            <input type="file" name="csvfile" size="30" /><br />
+            <input type="submit" value="アップロード" />
+    </form>
+</div>
 
 <script>
     // 日付選択
     $('#date_sample').datepicker({
         format:'yyyy/mm/dd',
     });
+
+    // 掛け算を実施し、結果の表示
+    $("select").change(function () {
+        let item_price = $(".price_taxex").val();
+        let item_quantity= $(".quantity").val();
+        let item_sum= item_price*item_quantity;
+        $("#item_sum").val(item_sum);
+      });
 
     // 商品選択
     var $children = $('.children'); 
