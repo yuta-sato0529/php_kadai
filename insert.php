@@ -2,8 +2,8 @@
 
 $date = $_POST['date'];
 $item = $_POST['item'];
-$quantity = $_POST['quantity'];
 $price_taxex = $_POST['price_taxex'];
+$quantity = $_POST['quantity'];
 $sum = $_POST['sum_price'];
 $cus_age = $_POST['cus_age'];
 $cus_sex = $_POST['cus_sex'];
@@ -11,7 +11,8 @@ $cus_sex = $_POST['cus_sex'];
 // 2. DB接続します
 try {
   //Password:MAMP='root',XAMPP=''
-  $pdo = new PDO('mysql:dbname=gs-yuta-sato_wine_sales;charset=utf8;host=mysql57.gs-yuta-sato.sakura.ne.jp','gs-yuta-sato','ryokuchi0152-yu');
+  $pdo = new PDO('mysql:dbname=wine_sales;charset=utf8;host=localhost','root','root');
+  // $pdo = new PDO('mysql:dbname=gs-yuta-sato_wine_sales;charset=utf8;host=mysql57.gs-yuta-sato.sakura.ne.jp','gs-yuta-sato','ryokuchi0152-yu');
 } catch (PDOException $e) {
   exit('DBConnectError:'.$e->getMessage());
 }

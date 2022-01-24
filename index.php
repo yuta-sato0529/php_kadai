@@ -63,7 +63,7 @@
                 <option value="15">15</option>
             </select><br>
      <label>合計金額：<input type="text" name="sum_price"></label><br>
-     <label>顧客年代：<select class="form-select" aria-label="Default select example" name="cus_sex">
+     <label>顧客年代：<select class="form-select" aria-label="Default select example" name="cus_age">
             <!-- 年代選択 -->
             <option selected>年代</option>
                 <option>20代以下</option>
