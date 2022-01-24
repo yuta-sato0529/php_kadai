@@ -1,7 +1,7 @@
 <?php
 // エラー表示コード
-ini_set("display_errors", 1);
-error_reporting(E_ALL);
+// ini_set("display_errors", 1);
+// error_reporting(E_ALL);
 
 
 $buy_date = $_POST['buy_date'];
