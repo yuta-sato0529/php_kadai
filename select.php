@@ -1,12 +1,13 @@
 <?php
 //1.  DB接続します
-try {
-  //Password:MAMP='root',XAMPP=''
-  $pdo = new PDO('mysql:dbname=wine_sales;charset=utf8;host=localhost','root','root');
- 
-} catch (PDOException $e) {
-  exit('DBConnectError:'.$e->getMessage());
-}
+//【重要】
+/**
+ * DB接続のための関数をfuncs.phpに用意
+ * require_onceでfuncs.phpを取得
+ * 関数を使えるようにする。
+ */
+require_once('funcs.php');
+$pdo = db_conn();
 
 //２．SQL文を用意(データ取得：SELECT)
 $stmt = $pdo->prepare("SELECT * FROM wine_table");
@@ -26,8 +27,13 @@ if($status==false) {
   //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
   while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){ 
     $view .="<p>";//.=で足し算をしていくことができる
-    $view .=$result['date'].':'.$result['item'].' '.$result['quantity'].' '.$result['sum_price'];
-    $view .="</p>";
+    $view .= '<a href="detail.php?id='.$result['id'].'">';
+    $view .= $result['date'].':'.$result["item"] . "：" . $result["quantity"].' '.$result['sum_price'];
+    $view .= '</a>';
+    $view .= '<a href="delete.php?id='.$result['id'].'">';
+    $view .= '  [削除]';
+    $view .= '</a>';
+    $view .= '</p>';
   }
 
 }
